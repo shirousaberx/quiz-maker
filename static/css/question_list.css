@@ -14,3 +14,12 @@ body {
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
 
+.add-button {
+    border-radius: 50%;
+    position: fixed;
+    height: 50px;
+    width: 50px;
+    right: 5%;
+    bottom: 5%;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 2px 4px;
+}

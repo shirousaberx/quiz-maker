@@ -29,11 +29,13 @@ This is a web program build using Flask where you can create quiz and answer the
 
 # Project Details
 **Features**
+
 You can add, delete, and edit quiz questions. You can add different number of choices to each question.
 
 After you answer the quiz, there will be summary of correct choice and incorrect choice.
 
 **Database name**
+
 quiz_maker
 
 

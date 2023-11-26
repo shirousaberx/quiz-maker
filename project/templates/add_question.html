@@ -1,13 +1,6 @@
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Question</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="./static/css/add_question.css">
-</head>
-<body>
+{% extends 'layout.html'%}
+{% block content %}
+    <link rel="stylesheet" href="{{url_for('static', filename='css/add_question.css')}}">
     <div class="container py-5 d-flex flex-column">
         <div class="row my-auto">
             <div class="col-md-12 text-center">
@@ -16,38 +9,45 @@
         </div>
     </div>
     <div class="container question">
-        <div class="row">
-            <div class="col-md-12">
-                <label class="form-label">Question</label>
-                <textarea class="form-control"></textarea>
-            </div>
-        </div>
-        <div class="row mt-3">
-            <div class="col-md-12">
-                <p class="mb-2">Choices</p>
-                <button class="btn btn-warning d-block">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus-square" viewBox="0 0 16 16">
-                        <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
-                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
-                    </svg>
-                </button>
-                <div class="input-group mt-2">
-                    <div class="input-group-text">
-                        <input class="form-check-input mt-0" type="radio" value="">
-                    </div>
-                    <input type="text" class="form-control">
-                    <button class="btn btn-danger" type="button"><i class="bi bi-trash-fill"></i></button>
+        <form action="#" method="post">
+            <div class="row">
+                <div class="col-md-12">
+                    <label class="form-label">Question</label>
+                    <textarea name="question" class="form-control" required></textarea>
                 </div>
             </div>
-        </div>
-        <div class="row mt-4">
-            <div class="col-md-12 text-center">
-                <button class="btn btn-success">Add Question</button>
+            <div class="row mt-3">
+                <div class="col-md-12">
+                    <p class="mb-2">Choices</p>
+                    <button class="btn btn-warning" type="button" onclick="insert_choice(this)">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus-square" viewBox="0 0 16 16">
+                            <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                        </svg>
+                    </button>
+                    <div class="choice input-group mt-2">
+                        <div class="input-group-text">
+                            <input class="form-check-input mt-0" type="radio" name="choice" value="0" required>
+                        </div>
+                        <input type="text" name="0" class="form-control" required>
+                        <button class="btn btn-danger" type="button" onclick="delete_choice(this)"><i class="bi bi-trash-fill"></i></button>
+                    </div>
+                    <div class="choice input-group mt-2">
+                        <div class="input-group-text">
+                            <input class="form-check-input mt-0" type="radio" name="choice" value="1" required>
+                        </div>
+                        <input type="text" name="1" class="form-control" required>
+                        <button class="btn btn-danger" type="button" onclick="delete_choice(this)"><i class="bi bi-trash-fill"></i></button>
+                    </div>
+                </div>
             </div>
-        </div>
+            <div class="row mt-4">
+                <div class="col-md-12 text-center">
+                    <button class="btn btn-success" type="submit">Add Question</button>
+                </div>
+            </div>
+        </form>
     </div>
 
-    <script src="./static/js/add_question.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+    <script src="{{url_for('static', filename='js/add_question.js')}}"></script>
+{% endblock %}

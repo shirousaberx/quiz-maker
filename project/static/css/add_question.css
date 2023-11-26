@@ -12,9 +12,9 @@ body {
     border-radius: 30px;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
     
-    margin: 0;
-    position: absolute;
-    top: 50%;
+    margin: 0 0 200px 0;
+    position: relative;
+    top: 20%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -20%);
 }

@@ -1,0 +1,19 @@
+{% extends 'layout.html'%}
+{% block content %}
+    <link rel="stylesheet" href="{{url_for('static', filename='css/add_question.css')}}">
+    <div class="container py-5 d-flex flex-column">
+        <div class="row my-auto">
+            <div class="col-md-12 text-center">
+                <h1 class="text-light">Score</h1>
+            </div>
+        </div>
+    </div>
+    <!-- question -->
+    <div class="container question d-flex align-items-center">
+        <div class="mx-auto">
+            <h2>Correct: {{correct}}</h2>
+            <h2>Wrong: {{wrong}}</h2>
+            <h2>Number of questions: {{correct + wrong}}</h2>
+        </div>
+    </div>
+{% endblock %}

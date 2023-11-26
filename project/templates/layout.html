@@ -18,8 +18,8 @@
                     <li class="nav-item">
                         <a class="nav-link {{ 'active' if title=='Question List' }}" href="{{url_for('question_list')}}">Question List</a>
                     </li>
-                    <li class="nav-item {{ 'active' if title=='Quiz' }}">
-                        <a class="nav-link" href="#">Quiz</a>
+                    <li class="nav-item">
+                        <a class="nav-link {{ 'active' if title=='Quiz' }}" href="{{url_for('start_quiz')}}">Quiz</a>
                     </li>
                 </ul>
             </div>

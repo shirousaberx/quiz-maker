@@ -78,6 +78,60 @@ def delete_question(question_id):
         flash('danger', 'Failed to delete question!')
     return redirect('/question_list')
 
+questions = None  # storing questions from database
+question_number = 0 
+correct = 0 # number of correctly answered questions
+wrong = 0   # number of incorrectly answered questions
+
+@app.route('/start_quiz')
+def start_quiz():
+    global questions
+    global question_number
+    global correct
+    global wrong
+
+    question_number = 0
+    correct = 0
+    wrong = 0
+
+    questions = db.read_question(None)
+
+    if (len(questions) == 0):
+        questions_exist = False
+    else:
+        questions_exist = True
+
+    return render_template('start_quiz.html', title='Quiz', questions_exist=questions_exist)
+
+@app.route('/answer_quiz')
+def answer_quiz():
+    question = questions[question_number]
+
+    return render_template('answer_quiz.html', question_number=question_number+1, question=question, title='Quiz')
+
+@app.route('/process_answer', methods=["POST", "GET"])
+def process_answer():
+    global question_number
+    global correct
+    global wrong
+
+    if request.method == "POST":
+        if questions[question_number][2][int(request.form['choice'])][2] == 'Y':
+            correct += 1
+            print('correct')
+        else:
+            wrong += 1
+            print('wrong')
+        question_number += 1
+    
+        if question_number >= len(questions):
+            return redirect('/show_score')
+
+    return redirect('/answer_quiz')
+
+@app.route('/show_score')
+def show_score():
+    return render_template('show_score.html', title='Quiz', correct=correct, wrong=wrong)
 
 if __name__ == '__main__':
     app.run(debug = True)

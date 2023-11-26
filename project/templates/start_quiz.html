@@ -1,0 +1,34 @@
+{% extends 'layout.html'%}
+{% block content %}
+<link rel="stylesheet" href="{{url_for('static', filename='css/start_quiz.css')}}">
+<div class="container py-5 d-flex flex-column">
+    <div class="row my-auto">
+        <div class="col-md-12 text-center">
+            <h1 class="text-light">Start Quiz</h1>
+        </div>
+    </div>
+</div>
+<div class="container question">
+    <div class="vertical-center">
+        {% if questions_exist == True %}
+        <div class="row text-center">
+            <div class="col-md-12">
+                <h1>Press Button Below to Start Quiz!</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div id="start-button" class="d-grid gap-2 col-md-5 mx-auto my-3">
+                <a href="{{url_for('answer_quiz')}}" class="btn btn-success btn-lg" type="button">Start Quiz</a>
+            </div>
+        </div>
+        {% else %}
+        <div class="row text-center">
+            <div class="col-md-12">
+                <h3>There are no questions</h3>
+                <h3>Please create questions first!</h3>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

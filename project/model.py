@@ -34,6 +34,7 @@ class Database:
         # convert tuple into list
         questions = [list(question) for question in questions]
 
+        # append choices after each question
         for question in questions:
             choices = []
             for answer in answers:
@@ -56,7 +57,6 @@ class Database:
         try: 
             cursor.execute('SELECT question_id FROM questions ORDER BY question_id DESC LIMIT 1')
             row = cursor.fetchone()
-            print(row[0])
         except Exception as e:
             print(e)
             return -1
